@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap')
+
+*
+    font-family: 'Roboto', sans-serif
+    margin: 0
+    padding: 0
+    text-decoration: none
+
+a
+    color: #1a202c
+
+body
+    background: #f6f6f6
+
+header
+    background: #1a202c
+    padding: 13rem 0
+
+    .title
+        font-size: 20rem
+        color: white
+        font-weight: 300
+        display: flex
+        align-items: center
+
+.container
+    max-width: 1100rem
+    margin-inline: auto
+    padding: 0 15rem
+
+.auto
+    background: white
+    width: 350rem
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.13), 0 2rem 14rem rgba(0, 0, 0, 0.07)
+    margin-top: 100rem
+    padding: 15rem
+
+    input
+        width: calc(100% - 7rem)
+        padding: 6rem
+        margin-bottom: 10rem
+        outline: none
+        border: 1px solid darkgray
+        border-radius: 5rem
+
+.flex-header
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+.logout
+    padding: 6rem 13rem
+    font-size: 15rem
+    color: white
+    background: #d22b2b
+    border-radius: 7rem
+    cursor: pointer
+
+.err
+    color: darkred
+    font-size: 13rem
+
+.btn
+    outline: none
+    border: none
+    cursor: pointer
+    padding: 8rem 20rem
+    border-radius: 100rem
+    transition: .2s
+    font-size: 15rem
+    user-select: none
+
+    @media (max-width: 768px)
+        font-size: 10rem
+        padding: 6rem 12rem
+
+    &-primary
+        //background-color: #327fef
+        color: white
+        box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1), 0 2rem 14rem rgba(0, 0, 0, 0.1)
+        background: linear-gradient(#3b84ee, #1c67d5)
+        transition: background 0.3s ease-out
+        background-size: 1rem 200rem
+
+        &:hover
+            background-color: #1c67d5
+            background-position: 100rem
+
+        &:disabled
+            background: linear-gradient(#93baf3, #6c9de1)
+            cursor: default
+
+    &-purple
+        //background-color: #327fef
+        color: white
+        box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1), 0 2rem 14rem rgba(0, 0, 0, 0.1)
+        background: linear-gradient(#8b00ff, #e025b4)
+        transition: background 0.3s ease-out
+        background-size: 1rem 200rem
+
+        &:hover
+            background-color: #8b00ff
+            background-position: 100rem
+
+        &:disabled
+            background: linear-gradient(#be6dff, #ba72ff)
+            cursor: default
+
+    &-danger
+        background-color: #fd6363
+        color: white
+
+        &:hover
+            background-color: #ff4f4f
+
+.fs
+    font-size: 15rem
+
+.fs2
+    font-size: 20rem
+    text-align: center
+    margin-bottom: 15rem
+
+main
+    margin-top: 50rem
+    background: #ffffff
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.13), 0 2rem 14rem rgba(0, 0, 0, 0.07)
+    border-radius: 5rem
+    padding: 0 !important
+
+.main
+    &-header
+        width: 100%
+        height: 40rem
+        background: #f3f3f3
+        overflow: hidden
+        border-radius: 5rem 5rem 0 0
+        border-bottom: 1px solid #cccccc
+
+        .title
+            font-size: 17rem
+            display: flex
+            align-items: center
+            height: 100%
+            padding-left: 15rem
+
+    &-main
+        padding: 15rem
+
+        .add-item
+            display: flex
+            justify-content: space-between
+            gap: 20rem
+
+        input
+            width: calc(100% - 7rem)
+            outline: none
+            border: 1px solid #e1e1e1
+            border-radius: 100rem
+            padding: 0 10rem
+            box-shadow: 0 0 2rem rgba(0, 0, 0, 0.13), 0 2rem 14rem rgba(0, 0, 0, 0.07)
+
+.list
+    margin-top: 20rem
+    border: 1px solid #e1e1e1
+
+    &-item
+        font-size: 15rem
+        padding: 10rem
+        display: flex
+        flex-direction: column
+        gap: 10rem
+
+        &__flex
+            display: flex
+            align-items: center
+            gap: 10rem
+
+            input[type=checkbox]
+                width: 15rem
+                height: 15rem
+
+            input[type=text]
+                width: 300rem
+                height: 25rem
+
+            &-jus
+                display: flex
+                justify-content: space-between
+                border-bottom: 1px solid #e1e1e1
+                padding-bottom: 10rem
+
+                &:last-child
+                    padding-bottom: 0 !important
+                    border-bottom: none !important
+
+            .btn
+                display: flex
+                align-items: center
+                padding: 8rem 10rem
+
+svg
+    width: 15rem
+    height: 15rem
