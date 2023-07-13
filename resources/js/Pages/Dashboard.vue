@@ -27,9 +27,7 @@ import { Head } from '@inertiajs/vue3';
                 <div class="list-item">
                     <div class="list-item__flex-jus" v-for="item in list">
                         <div class="list-item__flex">
-                            <input type="checkbox" :checked="item.status === '1'" value="1" @change="changeStatus(item.id)">
-                            <div style="font-size: 20rem;">{{ item }}</div>
-                            <div class="title" v-if="!item.edit">{{ item.title }}</div>
+                            <input type="checkbox" :checked="item.status === 1" value="1" @change="changeStatus(item.id)">
                             <form @submit.prevent="closeEdit(item.id)">
                                 <input type="text" v-model="item.title" v-if="item.edit">
                             </form>
