@@ -43,5 +43,7 @@ class MainController extends Controller
         $list = TODOList::where('id', $request->item_id)->first();
         $list->status = (int)$request->status;
         $list->save();
+
+        return $list;
     }
 }
