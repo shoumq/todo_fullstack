@@ -18,14 +18,14 @@ class APIController extends Controller
 {
 
     /**
-         * @OA\Post(
+     * @OA\Post(
      *     path="/api",
      *     summary="Вывод дел",
      *     tags={"Item"},
      *     @OA\Parameter(
      *      name="user_id",
      *      in="query",
-     *      required=true,
+     *      required=false,
      *    ),
      *     @OA\Response(
      *         response=200,
@@ -46,6 +46,10 @@ class APIController extends Controller
      *         )
      *     ),
      *      @OA\Response(
+     *         response=404,
+     *         description="Not found",
+     *     ),
+     *     @OA\Response(
      *         response=500,
      *         description="Internal Server Error",
      *     )
@@ -54,6 +58,11 @@ class APIController extends Controller
     public function index(Request $request)
     {
         $list = TODOList::where('user_id', (string)$request->user_id)->latest()->get();
+        if (TODOList::where('user_id', (string)$request->user_id)->first() == null) {
+            return response()->json([
+                'message' => 'User not found.'
+            ], 404);
+        }
         return response()->json($list);
     }
 
@@ -66,11 +75,15 @@ class APIController extends Controller
      *     @OA\Parameter(
      *      name="item_id",
      *      in="query",
-     *      required=true,
+     *      required=false,
      *    ),
      *     @OA\Response(
      *         response=200,
      *         description="",
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Not found",
      *     ),
      *      @OA\Response(
      *         response=500,
@@ -80,7 +93,17 @@ class APIController extends Controller
      */
     public function delete(Request $request)
     {
-        TODOList::destroy($request->item_id);
+        $list = TODOList::find($request->item_id);
+        if ($list == null) {
+            return response()->json([
+                'message' => 'Item not found.'
+            ], 404);
+        } else {
+            $list->delete();
+            return response()->json([
+                'message' => 'Item removed successfully.'
+            ]);
+        }
     }
 
 
@@ -97,7 +120,7 @@ class APIController extends Controller
      *     @OA\Parameter(
      *      name="user_id",
      *      in="query",
-     *      required=true,
+     *      required=false,
      *    ),
      *     @OA\Response(
      *         response=200,
@@ -142,7 +165,7 @@ class APIController extends Controller
      *     @OA\Parameter(
      *      name="title",
      *      in="query",
-     *      required=true,
+     *      required=false,
      *    ),
      *     @OA\Parameter(
      *      name="item_id",
@@ -170,12 +193,23 @@ class APIController extends Controller
      *      @OA\Response(
      *         response=500,
      *         description="Internal Server Error",
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Item not found",
      *     )
      * )
      */
     public function save(Request $request)
     {
         $list = TODOList::where('id', $request->item_id)->first();
+
+        if ($list == null) {
+            return response()->json([
+                'message' => 'Item not found.'
+            ], 404);
+        }
+
         $list->title = $request->title;
         $list->save();
 
@@ -214,12 +248,24 @@ class APIController extends Controller
      *      @OA\Response(
      *         response=500,
      *         description="Internal Server Error",
+     *     ),
+     *
+     *     @OA\Response(
+     *         response=404,
+     *         description="Item not found",
      *     )
      * )
      */
     public function status(Request $request)
     {
         $list = TODOList::where('id', $request->item_id)->first();
+
+        if ($list == null) {
+            return response()->json([
+                'message' => 'Item not found.'
+            ], 404);
+        }
+
         if ($list->status == "1") {
             $list->status = "0";
         } else {

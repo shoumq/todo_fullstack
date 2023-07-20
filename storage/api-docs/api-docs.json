@@ -16,7 +16,7 @@
                     {
                         "name": "user_id",
                         "in": "query",
-                        "required": true
+                        "required": false
                     }
                 ],
                 "responses": {
@@ -59,6 +59,9 @@
                             }
                         }
                     },
+                    "404": {
+                        "description": "Not found"
+                    },
                     "500": {
                         "description": "Internal Server Error"
                     }
@@ -76,12 +79,15 @@
                     {
                         "name": "item_id",
                         "in": "query",
-                        "required": true
+                        "required": false
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": ""
+                    },
+                    "404": {
+                        "description": "Not found"
                     },
                     "500": {
                         "description": "Internal Server Error"
@@ -105,7 +111,7 @@
                     {
                         "name": "user_id",
                         "in": "query",
-                        "required": true
+                        "required": false
                     }
                 ],
                 "responses": {
@@ -165,7 +171,7 @@
                     {
                         "name": "title",
                         "in": "query",
-                        "required": true
+                        "required": false
                     },
                     {
                         "name": "item_id",
@@ -215,6 +221,9 @@
                     },
                     "500": {
                         "description": "Internal Server Error"
+                    },
+                    "404": {
+                        "description": "Item not found"
                     }
                 }
             }
@@ -275,6 +284,9 @@
                     },
                     "500": {
                         "description": "Internal Server Error"
+                    },
+                    "404": {
+                        "description": "Item not found"
                     }
                 }
             }
