@@ -12,9 +12,8 @@ class MainController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
-        $list = TODOList::where('user_id', $user->id)->latest()->get();
-        return Inertia::render('Dashboard', compact('user', 'list'));
+        $list = TODOList::latest()->get();
+        return Inertia::render('Dashboard', compact('list'));
     }
 
     public function delItem(Request $request)
@@ -26,7 +25,6 @@ class MainController extends Controller
     {
         $list = new TODOList();
         $list->title = $request->titleItem;
-        $list->user_id = Auth::user()->id;
         $list->save();
 
         return $list;

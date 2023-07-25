@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('t_o_d_o_lists', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
             $table->text('title');
             $table->text('status')->default('0');
             $table->timestamps();

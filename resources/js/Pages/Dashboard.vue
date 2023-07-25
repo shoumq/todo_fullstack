@@ -5,13 +5,6 @@ import { Head } from '@inertiajs/vue3';
 <template>
     <Head title="Dashboard" />
 
-    <header>
-        <div class="container flex-header">
-            <div class="title">{{ user.name }}</div>
-            <div class="logout" @click="logout">Выйти</div>
-        </div>
-    </header>
-
     <main class="container">
         <div class="main-header">
             <div class="title">Список дел ({{ list.length }})</div>
@@ -72,11 +65,6 @@ export default {
     props: ['user', 'list'],
 
     methods: {
-        logout() {
-            axios.post('/logout')
-            window.location.href = '/login'
-        },
-
         delItem(item_id) {
             axios.post('/del_item', { item_id })
                 .then(() => {
@@ -121,9 +109,6 @@ export default {
             }
 
             axios.post('/status_item', { status: this.list.find(x => x.id === item_id).status, item_id })
-                .then((response) => {
-                    console.log(response);
-                })
         }
     },
 

@@ -12,13 +12,6 @@
                 ],
                 "summary": "Вывод дел",
                 "operationId": "60177e6fdadeba441fdb13972e66b160",
-                "parameters": [
-                    {
-                        "name": "user_id",
-                        "in": "query",
-                        "required": false
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -29,10 +22,6 @@
                                     "items": {
                                         "properties": {
                                             "id": {
-                                                "type": "number",
-                                                "example": "1"
-                                            },
-                                            "user_id": {
                                                 "type": "number",
                                                 "example": "1"
                                             },
@@ -107,11 +96,6 @@
                         "name": "title",
                         "in": "query",
                         "required": true
-                    },
-                    {
-                        "name": "user_id",
-                        "in": "query",
-                        "required": false
                     }
                 ],
                 "responses": {
@@ -125,10 +109,6 @@
                                         "properties": {
                                             "id": {
                                                 "type": "number",
-                                                "example": "1"
-                                            },
-                                            "user_id": {
-                                                "type": "string",
                                                 "example": "1"
                                             },
                                             "title": {
@@ -192,10 +172,6 @@
                                                 "type": "number",
                                                 "example": "1"
                                             },
-                                            "user_id": {
-                                                "type": "string",
-                                                "example": "1"
-                                            },
                                             "title": {
                                                 "type": "string",
                                                 "example": "Помыть посуду"
@@ -253,10 +229,6 @@
                                         "properties": {
                                             "id": {
                                                 "type": "number",
-                                                "example": "1"
-                                            },
-                                            "user_id": {
-                                                "type": "string",
                                                 "example": "1"
                                             },
                                             "title": {

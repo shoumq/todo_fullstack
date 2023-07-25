@@ -16,12 +16,11 @@ use Inertia\Inertia;
 |
 */
 
-Route::middleware('auth')->group(function () {
-    Route::get('/', [\App\Http\Controllers\MainController::class, 'index'])->name('index');
-    Route::post('/del_item/', [\App\Http\Controllers\MainController::class, 'delItem'])->name('delItem');
-    Route::post('/add_item/', [\App\Http\Controllers\MainController::class, 'addItem'])->name('addItem');
-    Route::post('/save_item/', [\App\Http\Controllers\MainController::class, 'saveItem'])->name('saveItem');
-    Route::post('/status_item/', [\App\Http\Controllers\MainController::class, 'statusItem'])->name('statusItem');
-});
 
-require __DIR__.'/auth.php';
+Route::get('/', [\App\Http\Controllers\MainController::class, 'index'])->name('index');
+Route::post('/del_item/', [\App\Http\Controllers\MainController::class, 'delItem'])->name('delItem');
+Route::post('/add_item/', [\App\Http\Controllers\MainController::class, 'addItem'])->name('addItem');
+Route::post('/save_item/', [\App\Http\Controllers\MainController::class, 'saveItem'])->name('saveItem');
+Route::post('/status_item/', [\App\Http\Controllers\MainController::class, 'statusItem'])->name('statusItem');
+
+// require __DIR__.'/auth.php';

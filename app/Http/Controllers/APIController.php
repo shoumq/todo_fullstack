@@ -22,11 +22,6 @@ class APIController extends Controller
      *     path="/api",
      *     summary="Вывод дел",
      *     tags={"Item"},
-     *     @OA\Parameter(
-     *      name="user_id",
-     *      in="query",
-     *      required=false,
-     *    ),
      *     @OA\Response(
      *         response=200,
      *         description="",
@@ -36,7 +31,6 @@ class APIController extends Controller
      *          type="array",
      *               @OA\Items(
      *                 @OA\Property(property="id", type="number", example="1"),
-     *                 @OA\Property(property="user_id", type="number", example="1"),
      *                 @OA\Property(property="title", type="string", example="Помыть посуду"),
      *                 @OA\Property(property="status", type="number", example="1"),
      *                 @OA\Property(property="created_at", type="time", example="2023-07-06T08:27:30.000000Z"),
@@ -57,12 +51,7 @@ class APIController extends Controller
      */
     public function index(Request $request)
     {
-        $list = TODOList::where('user_id', (string)$request->user_id)->latest()->get();
-        if (TODOList::where('user_id', (string)$request->user_id)->first() == null) {
-            return response()->json([
-                'message' => 'User not found.'
-            ], 404);
-        }
+        $list = TODOList::latest()->get();
         return response()->json($list);
     }
 
@@ -117,11 +106,6 @@ class APIController extends Controller
      *      in="query",
      *      required=true,
      *    ),
-     *     @OA\Parameter(
-     *      name="user_id",
-     *      in="query",
-     *      required=false,
-     *    ),
      *     @OA\Response(
      *         response=200,
      *         description="",
@@ -131,7 +115,6 @@ class APIController extends Controller
      *          type="array",
      *               @OA\Items(
      *                 @OA\Property(property="id", type="number", example="1"),
-     *                 @OA\Property(property="user_id", type="string", example="1"),
      *                 @OA\Property(property="title", type="string", example="Помыть посуду"),
      *                 @OA\Property(property="status", type="string", example="0"),
      *                 @OA\Property(property="created_at", type="time", example="2023-07-06T08:27:30.000000Z"),
@@ -149,7 +132,6 @@ class APIController extends Controller
     public function add(Request $request)
     {
         $list = new TODOList();
-        $list->user_id = $request->user_id;
         $list->title = $request->title;
         $list->save();
 
@@ -181,7 +163,6 @@ class APIController extends Controller
      *          type="array",
      *               @OA\Items(
      *                 @OA\Property(property="id", type="number", example="1"),
-     *                 @OA\Property(property="user_id", type="string", example="1"),
      *                 @OA\Property(property="title", type="string", example="Помыть посуду"),
      *                 @OA\Property(property="status", type="string", example="0"),
      *                 @OA\Property(property="created_at", type="time", example="2023-07-06T08:27:30.000000Z"),
@@ -236,7 +217,6 @@ class APIController extends Controller
      *          type="array",
      *               @OA\Items(
      *                 @OA\Property(property="id", type="number", example="1"),
-     *                 @OA\Property(property="user_id", type="string", example="1"),
      *                 @OA\Property(property="title", type="string", example="Помыть посуду"),
      *                 @OA\Property(property="status", type="string", example="0"),
      *                 @OA\Property(property="created_at", type="time", example="2023-07-06T08:27:30.000000Z"),
